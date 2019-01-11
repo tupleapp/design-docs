@@ -65,7 +65,11 @@ the host's machine.
 7. While the guest has control, the host's mouse movements do not affect the
 pointer.
 
-8. Whenever control changes hands, the red border on the screen flashes once.
+8. Whenever control changes hands, there is a visual indication of some kind.
+   Ideas:
+   - Flash the red border.
+   - Change the border color.
+   - Change the cursor's color.
 
 9. When either side clicks to take control, the click does not fire a click
 event on the host machine.
@@ -74,6 +78,8 @@ event on the host machine.
 ## Open questions
 
 - How much do our users value Free-for-all Mode? Are they using it a lot?
+
+- What's the best way to visually indicate that control has swapped?
 
 - Should the host should be able to activate Tag Team? I can picture thinking
   "get that extra pointer out of here!" and wanting to change to Tag Team.
