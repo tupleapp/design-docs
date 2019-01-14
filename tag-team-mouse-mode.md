@@ -11,31 +11,29 @@ pointer by clicking once to take control.
 
 ## Context
 
-As of v0.11.5 (1/11/19), Free-for-all Mode is the source of many bugs. 
+As of v0.11.5 (1/11/19), Free-for-all Mode is the source of many bugs.
 
 The differences in external mice vs trackpads and across distinct macOS
 versions leads to lots of complexity. It's tricky to handle edge cases like
 showing the correct pointer type.
 
-It's also not clear how useful our users find Free-for-all Mode. (Let's show
-this doc to them and see what they think.)
+It's also not clear how useful our users find Free-for-all Mode.
 
 We suspect that Tag Team will be much easier to implement correctly.
 
 
 ## Goals
 
-- Provide a mouse mode that offers many of the benefits of Free-for-all Mode,
+- Replace Free-for-all Mode with something that provides many of the benefits
   but with lower complexity and tendency for buginess.
+
+- Eliminate the phantom pointer effect.
 
 - Give our early users a reliable mouse mode quickly, which buys time to
   perfect Free-for-all Mode.
 
 
 ## Non-goals
-
-- Unless user feedback strongly suggests that it would be acceptable, the goal
-  of Tag Team is not to replace Free-for-all Mode.
 
 - It is not our goal to spend a huge amount of development effort on this task.
   If Tag Team proves to be equally complex to implement, the effort should be
@@ -65,29 +63,16 @@ the host's machine.
 7. While the guest has control, the host's mouse movements do not affect the
 pointer.
 
-8. Whenever control changes hands, there is a visual indication of some kind.
-   Ideas:
-   - Flash the red border.
-   - Change the border color.
-   - Change the cursor's color.
-
-9. When either side clicks to take control, the click does not fire a click
+8. When either side clicks to take control, the click does not fire a click
 event on the host machine.
+
+9. When the guest does not have control, right-clicking shows an indicator on
+   the host machine.
 
 
 ## Open questions
 
-- How much do our users value Free-for-all Mode? Are they using it a lot?
+- Do we need some sort of indication that control has switched, or will people
+  just figure it out?
 
-- What's the best way to visually indicate that control has swapped?
-
-- Should the host should be able to activate Tag Team? I can picture thinking
-  "get that extra pointer out of here!" and wanting to change to Tag Team.
-  Agreed?
-
-
-## Milestones
-
-1. Quick-and-dirty proof of concept to evaluate UX.
-2. Production-ready implementation deployed to staging for internal testing.
-3. Deployed to production and announced to users.
+- Will our users miss Free-for-all Mode? Are they using it a lot?
